@@ -1,134 +1,96 @@
-# Challenge12_Repo Report 
+# Challenge 12 Report 
 
-Use supervised learning to model and predict credit risk for consumer loans.
+ supervised learning models to predict credit risk based on a dataset from a peer-to-peer lending services company.
 use various classification algorithms to separate safe from risky loans. The logistic regression classification model that you’ll learn in this lesson will prove useful. This is because you’ll be able to categorize the riskiness of the loans in the Challenge into “high risk” and “low risk.” Because these two types of riskiness are categories that you’ll try to predict, you’ll be able to use the logistic regression type of classifier.
 
 ## Overview of the Analysis
+The purpose of this analysis is to Use supervised learning to model and predict credit risk for consumer loans. Because healthy loans easily outnumber risky loans, credit risk poses a classification problem that’s inherently imbalanced. 
+To address this inbalance the analysis will be done using the various classification algorithms to separate safe from risky loans. The logistic regression classification model proves to be very useful in categorizing the riskiness of the loans into “high risk” and “low risk.”
+ 
+The financial information contained in the data inclue the following:
+loan size, interest rate, borrower income, debt to income, number of accounts, derogatory marks and total_debt. Based on these financial information regarding the potential lender, using macuine learning alogrithm the objective is to predict the probaility that the will default or not.
 
-In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
+The dataset of the historical lending activity broken into features and targets has a value count of 77536 rows × 7 columns. This dataset was split into training and testing set with 75% (58152 rows × 2 columns) of the dataset used for training the model and 25% (19384 rows × 2 columns) for testing the model.
+The model is trained to detect patterns and able to build a model that can identify the creditworthiness of borrowers when exposed to new datasets, this is achieved by creating a Logistic Regression Model with the Original Data. 
+A resampling technique to enhance a model’s performance for imbalanced classes was used to predict which loans to consider at risk vs. which to consider not at risk. The at-risk loans will make up only a small portion of all the data.
+Using the confusion matrix the balanced accuracy scores and the precision and recall scores of both machine learning models are evaluated to write the credit risk analysis report.
 
-* Explain the purpose of the analysis.
- The purpose of this analysis is to use supervised learning models to predict credit risk based on a dataset from a peer-to-peer lending services company.
- Credit risk poses a classification problem that’s inherently imbalanced. This is because healthy loans easily outnumber risky loans.
-* Explain what financial information the data was on, and what you needed to predict.
-To achieve this objective, the following steps are implemented:
-1. Check for any class imbalance.
-2. Apply sampling techniques and use machine learning models to make accurate predictions for imbalanced data.
-3. Compare the classification models and sampling algorithms
+The methods is summarized as follows:
 
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
+### Create a Logistic Regression Model with the Original Data:
+ - Read in the original dataset 
 
+ - Split the data into X and y and then into testing and training sets at the ratio of 75% to 25%
+ 
+ _ Scale the  training data and the test data using the scaler module
 
-* Describe the stages of the machine learning process you went through as part of this analysis.
-  . Split the Data into Training and Testing Sets
-  . Create a Logistic Regression Model with the Original Data
-  . Predict a Logistic Regression Model with Resampled Training Data
-  . Write a Credit Risk Analysis Report
-1. use various techniques to train and evaluate models with imbalanced classes.  
-2. use a dataset of historical lending activity from a peer-to-peer lending services company to build a model that can identify the creditworthiness of borrowers.
+ - Fit a logistic regression classifier.
 
-Oversampling technique
-Read the data
+ - Create the predicted values for the testing and the training data.
 
-Visualize the data
+ - Print a confusion matrix for the training data.
 
-Split the data into training and testing sets
+ - Print a confusion matrix for the testing data.
 
-Oversample the data
+ - Print the training classification report.
 
-Fit a logistic regression model
+ - Print the testing classification report
+### The methods used for Predicting a Logistic Regression Model with Resampled Training Data is as follows:
 
-Make predictions
+ - Read in the dataset 
 
-Evaluate the model
+ - Split the data into X and y and then into testing and training sets.
 
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
-    - use a logistic regression model to compare two versions of the dataset.
-    - use the original dataset. 
-    - resample the data by using the RandomOverSampler module from the imbalanced-learn library.
-    - get the count of the target classes, train a logistic regression classifier, calculate the balanced accuracy score, generate a confusion matrix, and generate a classification report.
-    - create a credit risk analysis report 
-Logistics regression steps:
-to use a logistic regression model:
+ - Fit a logistic regression classifier.
 
-Create a model with LogisticRegression().
+ - Create the predicted values for the testing and the training data.
 
-Train the model with model.fit().
+ - Print a confusion matrix for the training data.
 
-Make predictions with model.predict().
+ - Print a confusion matrix for the testing data.
 
-Evaluate the model with accuracy_score().
+ - Print the training classification report.
+
+ - Print the testing classification report.
+
 
 ## Results
 
-Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of all machine learning models.
-
 * Machine Learning Model 1:
-  * Description of Model 1 Accuracy, Precision, and Recall scores.
+ - The accuracy score of the testing targets and testing predictions using the logistics regression with the original data shows score of 0.9698204704911267 or 96.98%
+ - For the prediction that the borrower will not default represented by "0"  the precision is 97% accurate and 0% in predicting that that the borrow will default.
+ - For the recall or the number of actually loan default transactions that the model correctly classified as default, it was 100% for the non risky loan and 0% for the risky loan.
+                   pre       rec       sup
 
+          0       0.97      1.00      18799
+          1       0.00      0.00        585
+
+avg / total       0.94      0.97      19384
 
 
 * Machine Learning Model 2:
-  * Description of Model 2 Accuracy, Precision, and Recall scores.
+ - The balanced accuracy score of the y_testing and y_prediction using the scaled  resampled data give an accuracy score of 0.9938682863200126 or 99.38% however the precision and recall have significantly improved in this model.
+ - Precison for the non risky loan increased to 100% and for the non resky loan increased from 0 to 85%.
+ - The recall accuracy for the non risky loan dropped from 100% to 99%, hower the recall for the risky loan improved from 0% to 99%.
+  
+                    pre       rec     sup
 
+          0       1.00      0.99     18799
+          1       0.85      0.99       585
+
+avg / total       1.00      0.99     19384
+  
 ## Summary
 
 Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
 * Which one seems to perform best? 
-
-. How do you know it performs best?
+Using this evaluation metrics to compare how classification models perform at predicting credit risk, it can be seen that model 2 is a better model for predicting both the precision and the recall in evaluating whther the loan transaction is risky or non risky.
+The testing data ALSO helps us understand how well the model performs on data that it never trained with. This gives us some sense of how we might use the model on new data to predict risky transactions  in real time. 
+  
+The second model performed best because of the following:
+- Precison for the non risky loan increased to 100% and for the non resky loan increased from 0 to 85%.
+- The recall accuracy for the non risky loan dropped from 100% to 99%, hower the recall for the risky loan improved from 0% to 99%.
 
 * Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
+The performance of the model is ffected by the sampling method, where the test data is skewed significantly towards either thr risky or non risky loan, the accuracy data will tend to favor the larger data, hence appropriate sampling technique to make accurate predictions for imbalanced data. 
 
-If you do not recommend any of the models, please justify your reasoning.
-
-
-
-
-
-# User Story
-
-
-
-
-
-# General information 
-
-
-
-# Technology
-Jupyter notebook that contains data preparation, analysis, and visualizations 
-%matplotlib inline
-Python
-
-# Libraries used in the analysis
-The following libraries and dependencies were imported and used in the project.
-import numpy as np
-import pandas as pd
-from pathlib import Path
-from sklearn.metrics import balanced_accuracy_score
-from sklearn.metrics import confusion_matrix
-from imblearn.metrics import classification_report_imbalanced
-import warnings
-warnings.filterwarnings('ignore')
-
-# Deliverables 
-This project implementation involve the following:
-• Splitting the Data into Training and Testing Sets
-• Creating a Logistic Regression Model with the Original Data
-• Predicting a Logistic Regression Model with Resampled Training Data
-• Writing a Credit Risk Analysis Report
-
-
-# Credit Risk Analysis Report
-For this section, you’ll write a brief report that includes a summary and an analysis of the performance of both machine learning models that you used in this challenge. You should write this report as the README.md file included in your GitHub repository.
-
-Structure your report by using the report template that Starter_Code.zip includes, and make sure that it contains the following:
-
-An overview of the analysis: Explain the purpose of this analysis.
-The results: Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of both machine learning models.
-
-A summary: Summarize the results from the machine learning models. Compare the two versions of the dataset predictions. Include your recommendation for the model to use, if any, on the original vs. the resampled data. If you don’t recommend either model, justify your reasoning.
-The analysis shows that the logistic regression model fit very well with the oversampled to provide and accurate classification with very high degree of precision and recall for healthy loan and high risk loans.
-for low risk loan '0' the accuracy precision is 100% and recall 99% and for high risk loan'1' the precision is 85% and the recall accuracy of 100%. 
-Comparing the logistics regression data and the resampled data we can see that the precision for the predicted data has droped by 0.01 while the recall ibcreased from 91 to 100%
