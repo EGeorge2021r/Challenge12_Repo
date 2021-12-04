@@ -1,27 +1,63 @@
-# Challenge12_Repo
-Using use supervised learning models to predict credit risk based on a dataset from a peer-to-peer lending services company
+# Challenge12_Repo Report 
 
-# Module 12 Report Template
-. Check for any class imbalance.
-. Apply sampling techniques and use machine learning models to make accurate predictions for imbalanced data.
-. Compare the classification models and sampling algorithms
+Use supervised learning to model and predict credit risk for consumer loans.
+use various classification algorithms to separate safe from risky loans. The logistic regression classification model that you’ll learn in this lesson will prove useful. This is because you’ll be able to categorize the riskiness of the loans in the Challenge into “high risk” and “low risk.” Because these two types of riskiness are categories that you’ll try to predict, you’ll be able to use the logistic regression type of classifier.
 
 ## Overview of the Analysis
 
 In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
 
 * Explain the purpose of the analysis.
-
+ The purpose of this analysis is to use supervised learning models to predict credit risk based on a dataset from a peer-to-peer lending services company.
+ Credit risk poses a classification problem that’s inherently imbalanced. This is because healthy loans easily outnumber risky loans.
 * Explain what financial information the data was on, and what you needed to predict.
-
+To achieve this objective, the following steps are implemented:
+1. Check for any class imbalance.
+2. Apply sampling techniques and use machine learning models to make accurate predictions for imbalanced data.
+3. Compare the classification models and sampling algorithms
 
 * Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
 
+
 * Describe the stages of the machine learning process you went through as part of this analysis.
+  . Split the Data into Training and Testing Sets
+  . Create a Logistic Regression Model with the Original Data
+  . Predict a Logistic Regression Model with Resampled Training Data
+  . Write a Credit Risk Analysis Report
+1. use various techniques to train and evaluate models with imbalanced classes.  
+2. use a dataset of historical lending activity from a peer-to-peer lending services company to build a model that can identify the creditworthiness of borrowers.
+
+Oversampling technique
+Read the data
+
+Visualize the data
+
+Split the data into training and testing sets
+
+Oversample the data
+
+Fit a logistic regression model
+
+Make predictions
+
+Evaluate the model
 
 * Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
+    - use a logistic regression model to compare two versions of the dataset.
+    - use the original dataset. 
+    - resample the data by using the RandomOverSampler module from the imbalanced-learn library.
+    - get the count of the target classes, train a logistic regression classifier, calculate the balanced accuracy score, generate a confusion matrix, and generate a classification report.
+    - create a credit risk analysis report 
+Logistics regression steps:
+to use a logistic regression model:
 
+Create a model with LogisticRegression().
 
+Train the model with model.fit().
+
+Make predictions with model.predict().
+
+Evaluate the model with accuracy_score().
 
 ## Results
 
